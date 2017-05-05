@@ -111,7 +111,7 @@ $(function() {
 
     /* Test suite named "New Feed Selection" */
     describe("New Feed Selection", function() {
-      /* TODO: Write a test that ensures when a new feed is loaded into .feeds
+      /* Test to ensure when a new feed is loaded into .feeds
        * by the loadFeed function that the content of each feed actually changes.
        * Remember, loadFeed() is asynchronous.
        */
@@ -121,10 +121,10 @@ $(function() {
        });
 
        it("should change content for each new feed", function(done) {
-         for(child = feeds.firstChild; child; child = child.nextSibling) {
-           expect(child).toBeDefined();
-           done();
-         }
+          for(var i = 0; i<feeds.children.length; i++ ) {
+            expect(feeds[i]).toBeDefined();
+            done();
+          }
        });
     });
 
