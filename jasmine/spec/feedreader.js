@@ -9,6 +9,8 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
+  "use strict";
+
   let feeds = $('.feed');
 
     /* This is our first test suite - a test suite just contains
@@ -92,7 +94,7 @@ $(function() {
     /* Test suite named "Initial Entries" */
     describe("Initial Entries", function() {
 
-      beforeEach(function(done) {
+      beforeEach(function(done) {//`done` Jasmine keyword used to make sure the async loadFeed() is finished before the test runs down below.
         loadFeed(0);
         done(0);
       });
@@ -122,10 +124,18 @@ $(function() {
 
        it("should change content for each new feed", function(done) {
           for(var i = 0; i<feeds.children.length; i++ ) {
-            expect(feeds[i]).toBeDefined();
-            done();
+            if(feeds.children[i].innerHTML != "") {
+              expect(feeds.children[i].innerHTML).toBeDefined();
+              done();
+            } else {
+              alert("broken content test, no feed content available")
+            }
           }
        });
     });
 
 }());
+
+/*
+Implement error handling for undefined variables and out-of-bound array access.
+*/
