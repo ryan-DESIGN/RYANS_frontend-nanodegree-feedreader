@@ -95,7 +95,7 @@ $(function() {
     describe("Initial Entries", function() {
 
       beforeEach(function(done) {//`done` Jasmine keyword used to make sure the async loadFeed() is finished before the test runs down below.
-        loadFeed(0, done);
+        loadFeed(0, done); //Unique style of async function offered by MarkN one of the Udacity coaches.
       });
 
         /* A test that ensures that when the loadFeed
@@ -121,8 +121,10 @@ $(function() {
        });
 
        it("should change content for each new feed", function(done) {//passing in `done` signals to Jasmine that this spec depends on async calls in the beforeEach() before beginning here
+
+
           for(var i = 0; i<feeds.children().length; i++ ) {
-              expect(feeds.children(i).innerHTML).toBeDefined();
+              expect(feeds.children(i).find('*').innerText).not.toHaveStringSameLengthAs(feeds.children(i+1).find('*').innerText);
               done();
           }
        });
