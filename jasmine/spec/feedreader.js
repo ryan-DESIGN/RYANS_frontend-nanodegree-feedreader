@@ -123,8 +123,8 @@ $(function() {
        it("should change content for each new feed", function(done) {//passing in `done` signals to Jasmine that this spec depends on async calls in the beforeEach() before beginning here
 
 
-          for(var i = 0; i<feeds.children().length; i++ ) {
-              expect(feeds.children(i).find('*').innerText).not.toHaveStringSameLengthAs(feeds.children(i+1).find('*').innerText);
+          for(var i = 0; i<feeds.children().find('*').children().length; i++ ) {
+              expect(feeds.children().find('*').children()[i]).not.toEqual(feeds.children().find('*').children()[i+1]);
               done();
           }
        });
